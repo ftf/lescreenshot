@@ -1,33 +1,57 @@
 lescreenshot
 ============
 
-shell script for easy and fast uploading of a screenshot 
+Shell script for easy and fast uploading of a screenshot. (Uses screencapture for taking a screenshot, which is a OS X default tool)
 
+Grabs a screenshot or takes a existing image as input, gives it a nice unique generated name, uploads it and fills the clipboard with the image URL.
 
-grabs a screenshot or takes a existing image as input
+Usage
+=====
 
-at first, check if ~/Pictures/lescreenshots exists, if not create it
+```./lescreenshot``` 
+Take a screenshot and upload it, no questions asked.
 
-if script parameter; then 
-   is a filename  - don't create a new screenshot (can be more than 1)
+```./lescreenshot ~/Downloads/animage001.png``` 
+Upload an existing image.
 
-   is full        - create a fullscreen screenshot (can be set as default below)
-   is partial     - create a paritial screenshot   (can be set as default below)
+```./lescreenshot p``` 
+Take a screenshot and open it for further editing in Pixelmator, quit Pixelmator to start the upload.
 
-   i t 			  - take a screenshot with a 5 seconds timer, e.g. usefull for 
-                    pulling up menus, etc
+Paramenters
+===========
++ a filename
++ full - create a fullscreen screenshot of the main display (the one with the menubar)
++ partial - select an area of the screen to be photocopied
++ t - gives you 5 seconds before the screenshot is actually taken, e.g. usefull for pulling up menues
++ imgtag - Copy an <img /> tag to your clipboard instead of the raw URL
++ bbtag - as above, but with bb [img] tag
++ Editors:
+  + s - Skitch.app (I like the arrows..)
+  + ps - Good old Photoshop CS6
+  + p - Pixelmator.app
+  + Edit the script of different editors.
 
-   is imgtag      - output a html img tag instead of the raw url
-   is bbtag       - as above but with bb img code tag
+Parameters can be mixed, but not with filenames right now
 
-   is s           - opens image with skitch - what else to use for arrows?
-   is p           - opens image with pixelmator
+Configuration
+====
+Either edit the variables in the script or set enviroment variables. 
 
-   : parameters can be mixed, buy not with filenames right now
+```
+$lescreenshot_folder
+$lescreenshot_scphost
+$lescreenshot_scpdirectory
+$lescreenshot_webpath
+$lescreenshot_octopressdirectory 
+$lescreenshot_type
+```
 
-   if you want to use different applications, change the parameter and names below
+Since arrays are a bug of hurt you can set the image editors only inside the script itself.
 
-generate a random filename with uuidgen
-create screenshot or copy parameter file to $lefolder; use generated name
-upload file with scp
-copy remote url to clipboard
+```
+modifierapps=("My awesome image editor:awsome_abbr
+ "Skitch:s"
+ "Pixelmator:p"
+ "Adobe Photoshop CS6:ps"
+)
+```
