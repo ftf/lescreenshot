@@ -8,13 +8,13 @@ Grabs a screenshot or takes a existing image as input, gives it a nice unique ge
 Usage
 =====
 
-```./lescreenshot``` 
+	./lescreenshot
 Take a screenshot and upload it, no questions asked.
 
-```./lescreenshot ~/Downloads/animage001.png``` 
+	./lescreenshot ~/Downloads/animage001.png
 Upload an existing image.
 
-```./lescreenshot p``` 
+	./lescreenshot p
 Take a screenshot and open it for further editing in Pixelmator, quit Pixelmator to start the upload.
 
 Paramenters
@@ -37,21 +37,19 @@ Configuration
 ====
 Either edit the variables in the script or set enviroment variables. 
 
-```
-$lescreenshot_folder
-$lescreenshot_scphost
-$lescreenshot_scpdirectory
-$lescreenshot_webpath
-$lescreenshot_octopressdirectory 
-$lescreenshot_type
-```
+	$lescreenshot_folder
+	$lescreenshot_scphost
+	$lescreenshot_scpdirectory
+	$lescreenshot_webpath
+	$lescreenshot_octopressdirectory 
+	$lescreenshot_type
 
 Since arrays are a bug of hurt you can set the image editors only inside the script itself.
 
-```
-modifierapps=("My awesome image editor:awsome_abbr
- "Skitch:s"
- "Pixelmator:p"
- "Adobe Photoshop CS6:ps"
-)
-```
+
+	modifierapps=("My awesome image editor:awsome_abbr
+	 "Skitch:s"
+	 "Pixelmator:p"
+	 "Adobe Photoshop CS6:ps"
+	)
+
