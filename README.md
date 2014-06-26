@@ -3,7 +3,9 @@ lescreenshot
 
 Shell script for easy and fast uploading of a screenshot. (Uses screencapture for taking a screenshot, which is a OS X default tool)
 
-Grabs a screenshot or takes a existing image as input, gives it a nice unique generated name, uploads it and fills the clipboard with the image URL.
+Grabs a screenshot or takes a existing image as input, gives it a nice unique generated name, uploads it and fills the clipboard with the image URL. 
+
+If installed [Growl](http://growl.info	) will inform you that the screenshot URL is ready for pasting.
 
 Usage
 =====
@@ -19,14 +21,14 @@ Take a screenshot and open it for further editing in Pixelmator, quit Pixelmator
 
 Paramenters
 ===========
-+ a filename
++ one or more filenames
 + full - create a fullscreen screenshot of the main display (the one with the menubar)
 + partial - select an area of the screen to be photocopied
 + t - gives you 5 seconds before the screenshot is actually taken, e.g. usefull for pulling up menues
 + imgtag - Copy an <img /> tag to your clipboard instead of the raw URL
 + bbtag - as above, but with bb [img] tag
 + Editors:
-  + s - Skitch.app (I like the arrows..)
+  + s - Skitch.app (I like its arrows..)
   + ps - Good old Photoshop CS6
   + p - Pixelmator.app
   + Edit the script of different editors.
@@ -47,7 +49,7 @@ Either edit the variables in the script or set enviroment variables.
 Since arrays are a bug of hurt you can set the image editors only inside the script itself.
 
 
-	modifierapps=("My awesome image editor:awsome_abbr
+	modifierapps=("My awesome image editor:awsom_abbr
 	 "Skitch:s"
 	 "Pixelmator:p"
 	 "Adobe Photoshop CS6:ps"

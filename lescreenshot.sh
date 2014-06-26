@@ -19,7 +19,7 @@
 #    is s           - opens image with skitch - what else to use for arrows?
 #    is p           - opens image with pixelmator
 #
-#    : parameters can be mixed, buy not with filenames right now
+#    : parameters can be mixed, but not with filenames right now
 #
 #    if you want to use different applications, change the parameter and names below
 #
@@ -61,7 +61,7 @@ dothegrowl ()
 gimmename ()
 {
    # generate random filename
-   echo `uuidgen | md5`
+   echo `uuidgen | tr -d "-"`
 }
 
 copyshot ()
@@ -77,6 +77,7 @@ copyshot ()
    else
       lefilename=$lefilename.png
       screencapture -t png $leshotopts $lefilename
+      hash optipng 2>/dev/null && optipng -o9 $lefilename
       if [ ! -e "$lefilename" ]; then
          # no new file? suppose user has cancled screenshot
          dothegrowl "screenscapture cancled or something bad happend"
@@ -90,7 +91,7 @@ ledelivery ()
    # upload or copy to our blog directory
    if [[ $deliverytarget == "blog" ]]; then
       mv $lefilename $octopressdirectory/
-      pburl+="/media/$lefilenam "
+      pburl+="/media/$lefilename"
    else
       scp $lefilename $scphost:$scpdirectory
       if [[ "$outputopt" == "htmltag" ]]; then
@@ -171,15 +172,15 @@ if [[ $leparameter ]]; then
                break
             fi
          done
-         IFS=$SAVEIFS        
+         IFS=$SAVEIFS
          # check if we found a parameter we know, if not growl an error
          if [[ $gotparam == false ]]; then
             dothegrowl "parameter or invalid file, please try again"
             exit
-         fi         
+         fi
    fi
    done
-else 
+else
    if [[ $screenshotype == "partial" ]]; then
       leshotopts=" -i"
    else
