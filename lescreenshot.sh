@@ -23,6 +23,8 @@
 #
 #    if you want to use different applications, change the parameter and names below
 #
+#	 add a nice icon.png to the script directory to get some nicer looking growl notifications
+#
 # generate a random filename with uuidgen
 # create screenshot or copy parameter file to $lefolder; use generated name
 # upload file with scp
@@ -55,7 +57,7 @@ dothegrowl ()
 {
    # using hash to check if growlnotify is in path, if
    # yes, fire a notification with the Skitch icon
-   hash growlnotify 2>/dev/null && growlnotify -t autoshot -n autoshot -I /Applications/Skitch.app/ -m "$@"
+   hash growlnotify 2>/dev/null && growlnotify -t autoshot -n autoshot --image icon.pngy  -m "$@"
 }
 
 gimmename ()
