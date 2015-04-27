@@ -30,11 +30,11 @@
 
 ############ configuration
 lefolder=~/Pictures/lescreenshot                            # local directory for screenshots
-scphost=myscphost                                           # scp host; for port, user and password
+scphost=mywebbox                                            # scp host; for port, user and password
                                                             # use ~/.ssh/config
-scpdirectory='~/screencaps'                                 # directory to scp to
-webpath=http://example.com/screenscaps                      # web path of that directory
-octopressdirectory=~/octopress/source/media                 # your octopress, blog, whatever 
+scpdirectory='~/lescreenshots/'                             # directory to scp to
+webpath=http://example.com/lescreenshots                    # web path of that directory
+octopressdirectory=~/octopress/source/media/                # your octopress, blog, whatever
                                                             # directory
 screenshotype=partial                                       # full or partial
 ############ end basic configuration
@@ -74,6 +74,7 @@ copyshot ()
       suffix=${@#*.}
       lefilename=$lefilename.$suffix
       cp "$@" $lefolder/$lefilename
+      chown 644 $lefolder/$lefilename
    else
       lefilename=$lefilename.png
       screencapture -t png $leshotopts $lefilename
@@ -111,7 +112,7 @@ leparameter=$@
 [[ -n "${lescreenshot_scphost+isset}" ]] && scphost=$lescreenshot_scphost
 [[ -n "${lescreenshot_scpdirectory+isset}" ]] && scpdirectory=$lescreenshot_scpdirectory
 [[ -n "${lescreenshot_webpath+isset}" ]] && webpath=$lescreenshot_webpath
-[[ -n "${lescreenshot_octopressdirectory+isset}" ]] && octopressdirectory=$lescreenshot_octopressdirectory 
+[[ -n "${lescreenshot_octopressdirectory+isset}" ]] && octopressdirectory=$lescreenshot_octopressdirectory
 [[ -n "${lescreenshot_type+isset}" ]] && screenshotype=$lescreenshot_type
 
 if [ ! -d $lefolder ]; then
